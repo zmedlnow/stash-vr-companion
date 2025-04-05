@@ -19,27 +19,28 @@ Stash VR Companion uses tags to configure both what is included in the index and
     3. *Screen Type* (or "projection"), which must be either:
         * `DOME` - 3D 180° projection, this is what most VR videos use.
         * `FISHEYE` - Fish Eye lense projection
-        * `190°` or `RF52` - 3d 190° projection used by SLR
+        * `190°` or `RF52` - 3D 190° projection used by SLR
         * `200°` or `MKX200` - 3D 200° projection used by SLR
         * `MKX220` - 3D 220° projection used by SLR
         * `SPHERE` - 3D 360° projection used by some earlier videos
         * `MONO` - Mono video with the same image for both eyes, commonly used with mono 360 videos
+        * `2DCONV` - 2D to 3D conversions
 
 ## Additional filter categories
 The default categories are Recent, 2D and VR. You can pin a studio and performers by adding a string to the studio description and a tag to the performer.
-Typically you will apply the tags "export_deovr", "FLAT" to a 2d scene or "export_deovr","DOME","SBS" for most 180° VR scenes.
+Typically you will apply the tags `export_deovr`, `FLAT` to a 2d scene, `export_deovr`, `SBS`, `DOME` for most 180° VR scenes, and `export_deovr`, `SBS`, `2DCONV` for most converted 2D scenes.
 
-To pin a studio edit the studio in stash and add the string EXPORT_DEOVR to the description field for the studio.
+To pin a studio edit the studio in stash and add the string `EXPORT_DEOVR` to the description field for the studio.
 
-To Pin a performer edit the performer and add the tag export_deovr to the performer.
+To Pin a performer edit the performer and add the tag `export_deovr` to the performer.
 
-To Pin a tag the tag must be a sub tag of export_deovr. Edit export_deovr and add the tag as a child.
+To Pin a tag the tag must be a sub tag of `export_deovr`. Edit `export_deovr` and add the tag as a child.
 
 ## Running in docker
 Configuration is done by providing environment variables to the docker container.
-The web server is running on port 5000 in the container.
-The folder /cache is used for an image cache and should be configured as a docker volume.
-The folder /hsp is used to store hsp files, these are configuration files used by heresphere to store scene settings including markers.
+The web server is running on port `5000` in the container.
+The folder `/cache` is used for an image cache and should be configured as a docker volume.
+The folder `/hsp` is used to store hsp files, these are configuration files used by heresphere to store scene settings including markers.
 
 | Parameter                                     | Function                                                                                                                                                                                            |
 |:----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,6 +55,6 @@ docker stop stash-vr-companion
 docker rm stash-vr-companion
 docker volume create stash-vr-companion
 docker volume create stash-vr-companion-hsp
-docker pull ghcr.io/tweeticoats/stash-vr-companion:latest
-docker run -d  --name=stash-vr-companion --restart=unless-stopped -v stash-vr-companion:/cache/ -v stash-vr-companion-hsp:/hsp/ -p 5000:5000 -e API_URL=http://192.168.0.22:9999/graphql ghcr.io/tweeticoats/stash-vr-companion:latest
+docker pull ghcr.io/zmedlnow/stash-vr-companion:latest
+docker run -d  --name=stash-vr-companion --restart=unless-stopped -v stash-vr-companion:/cache/ -v stash-vr-companion-hsp:/hsp/ -p 5000:5000 -e API_URL=http://192.168.0.22:9999/graphql ghcr.io/zmedlnow/stash-vr-companion:latest
 ```

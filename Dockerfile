@@ -1,5 +1,5 @@
 FROM python:3.10-bookworm
-label org.opencontainers.image.source = "https://github.com/Tweeticoats/stash-vr-companion"
+label org.opencontainers.image.source = "https://github.com/zmedlnow/stash-vr-companion"
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV CACHE_DIR /cache/
