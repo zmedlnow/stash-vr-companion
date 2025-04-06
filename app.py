@@ -1002,10 +1002,7 @@ def scene_type(scene):
 
         if "FLAT" in [x["name"] for x in scene["tags"]]:
             scene["screenType"] = "flat"
-            if "SBS" in [x["name"] for x in scene["tags"]]:
-                scene["is3d"] = True
-            else:
-                scene["is3d"] = False
+            scene["is3d"] = False
         elif "DOME" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = True
             scene["screenType"] = "dome"
@@ -1033,6 +1030,9 @@ def scene_type(scene):
         elif "FISHEYE" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = True
             scene["screenType"] = "fisheye"
+        elif "2DCONV" in [x["name"] for x in scene["tags"]]:
+            scene["is3d"] = True
+            scene["screenType"] = "flat"
         if "MONO" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = False
             scene.pop("stereoMode", None)
@@ -2559,6 +2559,8 @@ def heresphere_scene(scene_id):
             scene["stereo"] = "sbs"
         if s["screenType"] == "sphere":
             scene["projection"] = "equirectangular360"
+        elif s["screenType"] == "flat":
+            scene["projection"] = "perspective"
         elif s["screenType"] == "mkx200":
             scene["projection"]="fisheye"
             scene["lens"]="MKX200"
