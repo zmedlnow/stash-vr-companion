@@ -1961,7 +1961,7 @@ def refreshCache():
             else:
                 log.info("Cache up to date")
 
-    log.info("Cache currently contains % scenes, checking image cache" % (len(cache["scenes"]),))
+    log.info("Cache currently contains %s scenes, checking image cache" % (len(cache["scenes"]),))
 
     modified = False
     for index, s in cache["scenes"].items():
