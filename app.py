@@ -999,6 +999,9 @@ def scene_type(scene):
             scene["stereoMode"] = "sbs"
         elif "TB" in [x["name"] for x in scene["tags"]]:
             scene["stereoMode"] = "tb"
+        elif "LRF" in [x["name"] for x in scene["tags"]]:
+            scene["stereoMode"] = "lrf"
+
 
         if "FLAT" in [x["name"] for x in scene["tags"]]:
             scene["screenType"] = "flat"
