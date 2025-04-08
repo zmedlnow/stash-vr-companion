@@ -16,7 +16,7 @@ Stash VR Companion uses tags to configure both what is included in the index and
     1. *Stereo Mode*, which must be either:
         * `SBS` - Side by Side with the left eye taking up the left half of the video. This is the default for 3D videos; but setting explicitly can help you to search and filter in Stash.
         * `TB` - Top and bottom, with the left eye taking up the top half of the video.
-        * `LRF` - Full Side by Side, with each eye having a full resolution image. Higher quality, but less common format.
+        * `LRF` - Full Side by Side, with each eye having a full resolution image. Higher quality, but less common format. Not currently supported by Deovr or Heresphere APIs.
     3. *Screen Type* (or "projection"), which must be either:
         * `DOME` - 3D 180° projection, this is what most VR videos use.
         * `FISHEYE` - Fish Eye lense projection
