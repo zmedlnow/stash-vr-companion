@@ -1040,6 +1040,9 @@ def scene_type(scene):
             scene["is3d"] = False
             scene.pop("stereoMode", None)
 
+        if "EYESWAP" in [x["name"] for x in scene["tags"]]:
+            scene["eyeSwap"] = True
+
     if "ApiKey" in headers:
         scene["heatmap"] = "/heatmap_proxy/" + scene["id"]
     else:
@@ -2582,6 +2585,9 @@ def heresphere_scene(scene_id):
     else:
         scene["projection"] = "perspective"
         scene["stereo"] = "mono"
+
+    if s["eyeSwap"]:
+        scene["isEyeSwapped"] = s["eyeSwap"]
 
     tags = []
 

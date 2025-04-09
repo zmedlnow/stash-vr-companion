@@ -26,6 +26,8 @@ Stash VR Companion uses tags to configure both what is included in the index and
         * `SPHERE` - 3D 360° projection used by some earlier videos
         * `MONO` - Mono video with the same image for both eyes, commonly used with mono 360 videos
         * `2DCONV` - 2D to 3D conversions
+4. 3D Scenes may also have the following optional tags:
+    * `EYESWAP` - Swaps the eyes in the stereo projection. SBS will have the left eye take the right half of the video, TB will have the left eye take the bottom half of the video. Supported by Heresphere API, not currently supported by Deovr API.
 
 ## Additional filter categories
 The default categories are Recent, 2D and VR. You can pin a studio and performers by adding a string to the studio description and a tag to the performer.
