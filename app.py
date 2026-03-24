@@ -1006,6 +1006,9 @@ def scene_type(scene):
         if "FLAT" in [x["name"] for x in scene["tags"]]:
             scene["screenType"] = "flat"
             scene["is3d"] = False
+        elif "180°" in [x["name"] for x in scene["tags"]]:
+            scene["is3d"] = True
+            scene["screenType"] = "dome"
         elif "DOME" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = True
             scene["screenType"] = "dome"
