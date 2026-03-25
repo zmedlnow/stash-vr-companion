@@ -2568,11 +2568,16 @@ def heresphere_scene(scene_id):
         scene["stereo"] = s["stereoMode"]
 
     if s["is3d"]:
-        if s["stereoMode"] == "tb":
+        if s["stereoMode"] == "sbs":
+            scene["stereo"] = "sbs"
+        elif s["stereoMode"] == "tb":
             scene["stereo"] = "tb"
         else:
             scene["stereo"] = "sbs"
-        if s["screenType"] == "sphere":
+            
+        if s["screenType"] == "dome":
+            scene["projection"] = "equirectangular"
+        elif s["screenType"] == "sphere":
             scene["projection"] = "equirectangular360"
         elif s["screenType"] == "flat":
             scene["projection"] = "perspective"
@@ -2588,7 +2593,6 @@ def heresphere_scene(scene_id):
         elif s["screenType"] == "rf52":
             scene["projection"] = "fisheye"
             scene["lens"] = "rf52"
-
         else:
             scene["projection"] = "equirectangular"
 
