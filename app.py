@@ -995,14 +995,7 @@ def scene_type(scene):
         else:
             scene["screenType"] = "flat"
             scene["is3d"] = False
-        if "SBS" in [x["name"] for x in scene["tags"]]:
-            scene["stereoMode"] = "sbs"
-        elif "TB" in [x["name"] for x in scene["tags"]]:
-            scene["stereoMode"] = "tb"
-        elif "LRF" in [x["name"] for x in scene["tags"]]:
-            scene["stereoMode"] = "lrf"
-
-
+            
         if "FLAT" in [x["name"] for x in scene["tags"]]:
             scene["screenType"] = "flat"
             scene["is3d"] = False
@@ -1043,10 +1036,21 @@ def scene_type(scene):
             scene["is3d"] = False
             scene.pop("stereoMode", None)
 
+        if scene["is3d"] and "stereoMode" not in scene:
+            if "SBS" in [x["name"] for x in scene["tags"]]:
+                scene["stereoMode"] = "sbs"
+            elif "TB" in [x["name"] for x in scene["tags"]]:
+                scene["stereoMode"] = "tb"
+            elif "LRF" in [x["name"] for x in scene["tags"]]:
+                scene["stereoMode"] = "lrf"
+            else:
+                scene["stereoMode"] = "sbs"
+
         if "EYESWAP" in [x["name"] for x in scene["tags"]]:
             scene["eyeSwap"] = True
         else:
             scene["eyeSwap"] = False
+
 
     if "ApiKey" in headers:
         scene["heatmap"] = "/heatmap_proxy/" + scene["id"]
