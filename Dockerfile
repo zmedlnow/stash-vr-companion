@@ -1,9 +1,9 @@
 FROM python:3.10-bookworm
-label org.opencontainers.image.source = "https://github.com/zmedlnow/stash-vr-companion"
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV CACHE_DIR /cache/
-ENV HSP_DIR /hsp/
+LABEL org.opencontainers.image.source="https://github.com/zmedlnow/stash-vr-companion"
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV CACHE_DIR=/cache/
+ENV HSP_DIR=/hsp/
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 
