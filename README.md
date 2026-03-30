@@ -18,12 +18,12 @@ Stash VR Companion uses tags to configure both what is included in the index and
         * `TB` - Top and bottom, with the left eye taking up the top half of the video.
         * `LRF` - Full Side by Side, with each eye having a full resolution image. Higher quality, but less common format. Not currently supported by Deovr or Heresphere APIs.
     3. *Screen Type* (or "projection"), which must be either:
-        * `DOME` - 3D 180° projection, this is what most VR videos use.
+        * `DOME` or `180°` - 3D 180° projection, this is what most VR videos use.
         * `FISHEYE` - Fish Eye lense projection
-        * `190°` or `RF52` - 3D 190° projection used by SLR
-        * `200°` or `MKX200` - 3D 200° projection used by SLR
-        * `MKX220` - 3D 220° projection used by SLR
-        * `SPHERE` - 3D 360° projection used by some earlier videos
+        * `RF52` or `190°` - 3D 190° projection used by SLR
+        * `MKX200` or `200°` - 3D 200° projection used by SLR
+        * `MKX220` or `220°` - 3D 220° projection used by SLR
+        * `SPHERE` or `360°` - 3D 360° projection used by some earlier videos
         * `MONO` - Mono video with the same image for both eyes, commonly used with mono 360 videos
         * `2DCONV` - 2D to 3D conversions
 4. 3D Scenes may also have the following optional tags:
