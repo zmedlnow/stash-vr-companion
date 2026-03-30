@@ -999,13 +999,16 @@ def scene_type(scene):
         if "FLAT" in [x["name"] for x in scene["tags"]]:
             scene["screenType"] = "flat"
             scene["is3d"] = False
-        elif "180°" in [x["name"] for x in scene["tags"]]:
-            scene["is3d"] = True
-            scene["screenType"] = "dome"
         elif "DOME" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = True
             scene["screenType"] = "dome"
+        elif "180°" in [x["name"] for x in scene["tags"]]:
+            scene["is3d"] = True
+            scene["screenType"] = "dome"
         elif "SPHERE" in [x["name"] for x in scene["tags"]]:
+            scene["is3d"] = True
+            scene["screenType"] = "sphere"
+        elif "360°" in [x["name"] for x in scene["tags"]]:
             scene["is3d"] = True
             scene["screenType"] = "sphere"
         elif "MKX200" in [x["name"] for x in scene["tags"]]:
@@ -2567,18 +2570,13 @@ def heresphere_scene(scene_id):
     if "stereoMode" in s:
         scene["stereo"] = s["stereoMode"]
 
-    if s["is3d"]:
-        if s["stereoMode"] == "sbs":
-            scene["stereo"] = "sbs"
-        elif s["stereoMode"] == "tb":
-            scene["stereo"] = "tb"
-        else:
-            scene["stereo"] = "sbs"
-            
+    if s["is3d"]:            
         if s["screenType"] == "dome":
             scene["projection"] = "equirectangular"
+            scene["lens"] = "linear"
         elif s["screenType"] == "sphere":
             scene["projection"] = "equirectangular360"
+            scene["lens"] = "linear"
         elif s["screenType"] == "flat":
             scene["projection"] = "perspective"
         elif s["screenType"] == "mkx200":
@@ -2595,6 +2593,14 @@ def heresphere_scene(scene_id):
             scene["lens"] = "rf52"
         else:
             scene["projection"] = "equirectangular"
+            scene["lens"] = "linear"
+
+        if s["stereoMode"] == "sbs":
+            scene["stereo"] = "sbs"
+        elif s["stereoMode"] == "tb":
+            scene["stereo"] = "tb"
+        else:
+            scene["stereo"] = "sbs"
 
         scene["isEyeSwapped"] = s["eyeSwap"]
 
