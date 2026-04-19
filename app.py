@@ -1256,28 +1256,33 @@ def rewrite_image_url(scene):
 
 def setup():
     tags = [
-        "VR",
-        "SBS",
-        "TB",
-        "export_deovr",
-        "FLAT",
-        "DOME",
-        "SPHERE",
-        "FISHEYE",
-        "MKX200",
-        "Favorite",
-        "MONO",
-        "MKX220",
-        "VRCA220"]
+        ["VR"],
+        ["SBS"],
+        ["TB"],
+        ["export_deovr"],
+        ["FLAT"],
+        ["DOME", "180°"],
+        ["SPHERE", "360°"],
+        ["FISHEYE"],
+        ["RF52", "190°"]
+        ["MKX200", "200°"],
+        ["Favorite"],
+        ["MONO"],
+        ["MKX220"],
+        ["VRCA220"]]
 
     reload_filter_cache()
 
     # Convert the existing tags to lower case for a case-insensitive comparison
     existing_tags_lower = {x.lower(): x for x in tags_cache.keys()}
 
-    for t in tags:
-        # Check for the tag case-insensitively
-        if t.lower() not in existing_tags_lower:
+    for te in tags:
+        hali = False
+        for t in te:
+            # Check for the tag case-insensitively
+            if t.lower() in existing_tags_lower:
+                hali = True
+        if not hali:
             log.info("Creating tag " + t)
             try:
                 # Attempt to create the tag, handle the exception if it fails (e.g., if the tag exists)
