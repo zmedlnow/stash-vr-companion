@@ -1,5 +1,13 @@
 FROM python:3.10-bookworm
 LABEL org.opencontainers.image.source="https://github.com/zmedlnow/stash-vr-companion"
+
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+    
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV CACHE_DIR=/cache/
